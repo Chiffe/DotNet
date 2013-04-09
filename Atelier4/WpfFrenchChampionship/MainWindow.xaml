@@ -12,7 +12,7 @@
         <DockPanel LastChildFill="True">
             <Label DockPanel.Dock="Top" HorizontalAlignment="Center">Matchs</Label>
             <my:MatchEditView DockPanel.Dock="Top" x:Name="matchEditView"/>
-            <my1:MatchListView />
+            <my1:MatchListView x:Name="matchListView" />
         </DockPanel>
         <my:RankingView Grid.Column="1" x:Name="rankingView"/>
     </Grid>

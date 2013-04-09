@@ -25,17 +25,11 @@ namespace WpfFrenchChampionship.ViewModel
         {
             this._ranking = ranking;
             this._ranking.NewMatchRegistered += new EventHandler<Ranking.MatchRegistrationEventArgs>(_ranking_NewMatchRegistered);
-            match.CollectionChanged += new NotifyCollectionChangedEventHandler(match_CollectionChanged);
         }
 
         void _ranking_NewMatchRegistered(object sender, Ranking.MatchRegistrationEventArgs e)
         {
             match.Add(e.NewMatch);
-        }
-
-        void match_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            RaisePropertyChanged("Matches");
         }
 
         public INotifyCollectionChanged Matches
@@ -44,12 +38,6 @@ namespace WpfFrenchChampionship.ViewModel
             {
                 return match;
             }
-        }
-
-        private void ranking_NewMatchRegistered(object sender, Ranking.MatchRegistrationEventArgs e)
-        {
-            match.Add(e.NewMatch);
-
         }
     }
 }

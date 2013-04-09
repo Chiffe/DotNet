@@ -9,10 +9,10 @@
         <ListView  Style="{StaticResource ctrlSpace}" ItemsSource="{Binding Matches}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Domicile" DisplayMemberBinding="{Binding match.Home}" />
+                    <GridViewColumn Header="Domicile" DisplayMemberBinding="{Binding Home}" />
+                    <GridViewColumn Header="-" DisplayMemberBinding="{Binding HomeGoals}" />
+                    <GridViewColumn Header="-" DisplayMemberBinding="{Binding AwayGoals}" />
                     <GridViewColumn Header="Extérieur" DisplayMemberBinding="{Binding Away}" />
-                    <GridViewColumn Header="Buts Dom." DisplayMemberBinding="{Binding HomeGoals}" />
-                    <GridViewColumn Header="Buts Ext." DisplayMemberBinding="{Binding AwayGoals}" />
                 </GridView>
             </ListView.View>
         </ListView>

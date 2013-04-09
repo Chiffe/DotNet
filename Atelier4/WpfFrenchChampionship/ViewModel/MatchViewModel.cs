@@ -33,7 +33,8 @@ namespace WpfFrenchChampionship.ViewModel
         public Club SelectedHome
         {
             get { return _home; }
-            set {
+            set
+            {
                 _home = value;
                 RaisePropertyChanged("SelectedHome");
             }
@@ -51,8 +52,8 @@ namespace WpfFrenchChampionship.ViewModel
 
         public int HomeGoals
         {
-            get { return this._hgoals;  }
-            set 
+            get { return this._hgoals; }
+            set
             {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException();
@@ -60,7 +61,7 @@ namespace WpfFrenchChampionship.ViewModel
                 RaisePropertyChanged("HomeGoals");
             }
         }
-        
+
         public int AwayGoals
         {
             get { return this._agoals; }
@@ -72,12 +73,13 @@ namespace WpfFrenchChampionship.ViewModel
                 RaisePropertyChanged("AwayGoals");
             }
         }
-        
+
         public ICommand ValidateCommand
         {
-            get 
+            get
             {
-                return new BasicCommand(delegate(object parameter) {
+                return new BasicCommand(delegate(object parameter)
+                {
                     Match m = new Match(SelectedHome, SelectedAway, HomeGoals, AwayGoals);
                     this._ranking.Register(m);
                 });
