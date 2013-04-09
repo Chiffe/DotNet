@@ -7,6 +7,13 @@ namespace SoccerRankingLib
 {
     public class Ranking
     {
+        public event EventHandler<MatchRegistrationEventArgs> NewMatchRegistered;
+
+        public class MatchRegistrationEventArgs : EventArgs
+        {
+            public Match NewMatch;
+        }
+
         private class RankingEntry : IComparable
         {
             private Club club;
@@ -57,6 +64,8 @@ namespace SoccerRankingLib
             EntryFromClub(m.Home).Points.Increment(system.GetPointsFromMatch(m, true));
             EntryFromClub(m.Away).Points.Increment(system.GetPointsFromMatch(m, false));
             Array.Sort(entries);
+            if (NewMatchRegistered != null)
+                NewMatchRegistered(this, new MatchRegistrationEventArgs() { NewMatch = m });
         }
         public Club GetClub(int index)
         {

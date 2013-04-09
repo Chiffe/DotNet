@@ -21,6 +21,12 @@ namespace WpfFrenchChampionship.ViewModel
         public RankingViewModel(Ranking ranking)
         {
             this._ranking = ranking;
+            this._ranking.NewMatchRegistered += new EventHandler<Ranking.MatchRegistrationEventArgs>(_ranking_NewMatchRegistered);
+        }
+
+        void _ranking_NewMatchRegistered(object sender, Ranking.MatchRegistrationEventArgs e)
+        {
+            RaisePropertyChanged("RankedClubs");
         }
 
         public IEnumerable<RankedClub> RankedClubs
@@ -33,8 +39,8 @@ namespace WpfFrenchChampionship.ViewModel
                         Rank = i + 1,
                         Club = this._ranking.GetClub(i),
                         Total = this._ranking.GetPoints(i).ToString()
-                    };
-            }
+                    };                
+            } 
         }
     }
 }

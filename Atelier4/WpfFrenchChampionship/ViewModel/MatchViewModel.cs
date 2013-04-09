@@ -77,8 +77,9 @@ namespace WpfFrenchChampionship.ViewModel
         {
             get 
             {
-                return new BasicCommand(delegate(object parameter) { 
-                    // TODO : instanciate match and register it to ranking
+                return new BasicCommand(delegate(object parameter) {
+                    Match m = new Match(SelectedHome, SelectedAway, HomeGoals, AwayGoals);
+                    this._ranking.Register(m);
                 });
             }
         }
